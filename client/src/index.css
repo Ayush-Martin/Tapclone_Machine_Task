@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Eloran';
+    src: url('./assets/fonts/Eloran-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-eloran: "Eloran", sans-serif;
+    --font-nunito-sans: "Nunito Sans", sans-serif;
+
+    /* Brand Colors */
+    --color-brand-green: #10B981;
+    --color-brand-green-dark: #064E3B;
+    --color-brand-background: #04090d;
+    --color-brand-surface: #0F172A;
+
+    /* Text Colors */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #94A3B8;
+}
