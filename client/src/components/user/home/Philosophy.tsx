@@ -5,78 +5,81 @@ import ListBulletIcon from "../../../assets/Icons/ListBulletIcon.svg"
 
 const Philosophy = () => {
     return (
-        <section className="w-full px-6 relative min-h-[703px] flex items-stretch py-10 overflow-hidden bg-brand-background">
-            {/* Background Image & Overlay */}
+        <section className="w-full px-6 relative min-h-screen flex items-center py-16 overflow-hidden bg-brand-background">
+            {/* Background Image & Overlay - Kept exactly as you had it */}
             <div className="absolute inset-0 z-0">
                 <img
                     src={PhilosophyBgImage}
-                    alt="Hero Background"
+                    alt="Background"
                     className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-background/60 via-transparent to-brand-background/60" />
             </div>
 
-            <div className='relative flex w-full flex-row gap-4 z-20 px-10 mt-4'>
-                <div className='w-1/2 flex flex-col gap-10 px-2 py-5'>
-                    <p className=' text-brand-green'>WHY CAMACON</p>
-                    <h1 className="text-4xl md:text-5xl lg:text-4xl font-eloran text-text-primary uppercase">
-                        Your Single-Window Partner for <br />
-                        <span className="text-brand-green">Global Solutions</span>
-                    </h1>
+            <div className='relative z-20 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4'>
+                
+                {/* Left Side Content */}
+                <div className='flex flex-col gap-8'>
+                    <div className="space-y-4">
+                        <p className='text-brand-green tracking-widest text-sm font-semibold'>WHY COMACON</p>
+                        <h1 className="text-3xl md:text-5xl font-eloran text-text-primary uppercase leading-tight">
+                            Engineering-First <br />
+                            <span className="text-brand-green">Philosophy</span>
+                        </h1>
+                        <p className="text-text-secondary font-nunito-sans text-base leading-relaxed max-w-xl">
+                            Operating at the intersection of engineering, commerce, and technology, enabling clients to source, design, and deploy reliable systems across energy, infrastructure, automation, and sustainability domains.
+                        </p>
+                    </div>
 
-                    <p className="text-text-secondary font-nunito-sans text-[16px] leading-relaxed max-w-xl ">
-                        Delivering engineered commodities, technical consulting, and advanced technology solutions across energy, infrastructure, automation, and sustainability sectors worldwide.
-                    </p>
-
-                    <div className='grid grid-cols-2 gap-14' >
-                        {[1, 2, 3, 4].map(x => (
-                            <div key={x} className='w-full flex gap-4 items-start'>
-                                <div className='p-3 bg-black/10 backdrop-blur-sm 
-                border border-white/10 rounded-lg'>
-                                    <Icon icon={"mingcute:safety-certificate-line"} className='text-brand-green h-8 w-8' />
+                    {/* Features Grid - Made Responsive */}
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+                        {[
+                            { title: "Independent & Engineering-Led", icon: "mingcute:safety-certificate-line" },
+                            { title: "Unified Expertise", icon: "mingcute:group-line" },
+                            { title: "Retrofit-Focused", icon: "mingcute:tool-line" },
+                            { title: "Cross-Border Execution", icon: "mingcute:earth-line" }
+                        ].map((item, index) => (
+                            <div key={index} className='flex gap-4 items-start group'>
+                                <div className='p-3 bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg group-hover:border-brand-green transition-all'>
+                                    <Icon icon={item.icon} className='text-brand-green h-6 w-6' />
                                 </div>
-                                <div className='flex flex-col gap-2'>
-                                    <h1 className='text-white text-lg text-left'>Independent & Engineering-Led</h1>
-                                    <p className="text-text-secondary font-nunito-sans text-[16px] leading-tight max-w-xl ">
-                                        Our decisions are driven by technical merit, not vendor agreements.
+                                <div className='flex flex-col gap-1'>
+                                    <h4 className='text-white text-md font-medium'>{item.title}</h4>
+                                    <p className="text-text-secondary font-nunito-sans text-xs leading-tight">
+                                        Our decisions are driven by technical merit.
                                     </p>
-
                                 </div>
                             </div>
                         ))}
-
-
                     </div>
-
                 </div>
-                <div className='w-1/2 flex justify-center items-center px-10'>
-                    <div className='w-full  bg-brand-green-dark/10  
-                border border-white/10 rounded-lg px-10 py-7 flex flex-col gap-6'>
-                        <h1 className="text-2xl md:text-3xl font-eloran text-text-primary uppercase">
-                            OUR
-                            <span className="text-brand-green"> COMMITMENT</span>
-                        </h1>
 
-                        <p className="text-text-secondary font-nunito-sans text-[16px] leading-relaxed max-w-xl ">
+                {/* Right Side Commitment Card - Hover effect added */}
+                <div className='flex justify-center lg:justify-end'>
+                    <div className='w-full max-w-md bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl px-8 py-10 flex flex-col gap-6 
+                                    hover:bg-brand-green/[0.05] hover:border-brand-green/30 transition-all duration-500'>
+                        <h2 className="text-2xl md:text-3xl font-eloran text-text-primary uppercase">
+                            OUR <span className="text-brand-green">COMMITMENT</span>
+                        </h2>
+
+                        <p className="text-text-secondary font-nunito-sans text-sm leading-relaxed">
                             We are committed to delivering measurable value through every engagement.
                         </p>
 
-                        <div className='flex flex-col gap-3'>
-                            {[1, 2, 3, 4].map(x => (
-                                <div key={x} className='flex gap-2'>
-                                    <img src={ListBulletIcon} alt="" />
-                                    <p className='text-white/70 font-nunito-sans text-[16px] leading-relaxed max-w-xl '>
-                                        Technical integrity
+                        <div className='flex flex-col gap-4'>
+                            {["Technical integrity", "Transparent commercial practices", "Long-term client partnerships", "Measurable operational value"].map((text, x) => (
+                                <div key={x} className='flex gap-3 items-center group'>
+                                    <img src={ListBulletIcon} alt="" className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                                    <p className='text-white/70 font-nunito-sans text-sm'>
+                                        {text}
                                     </p>
                                 </div>
                             ))}
-
                         </div>
 
-                        <div className="relative pt-4">
-                            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-brand-green via-brand-green/10 to-transparent" />
-
-                            <h2 className="text-brand-green font-nunito text-lg tracking-wide">
+                        <div className="relative pt-6 mt-2">
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-brand-green via-brand-green/10 to-transparent" />
+                            <h2 className="text-brand-green font-nunito text-sm font-semibold tracking-wide">
                                 Strong backing from Udot's R&D and technology ecosystem
                             </h2>
                         </div>

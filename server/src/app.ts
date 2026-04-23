@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import cors from "./shared/config/cors";
-// import apiRouter from "./presentation/routes/api/index";
+import apiRouter from "./presentation/routes/index";
 import cookieParser from "cookie-parser";
 import nocache from "nocache";
 import { errorHandlerMiddleware } from "./infrastructure/container/DI";
@@ -19,7 +19,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
     this.app.use(nocache());
-    // this.app.use("/api", apiRouter);
+    this.app.use("/api", apiRouter);
     this.app.use(errorHandlerMiddleware.handle);
   }
 }

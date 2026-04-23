@@ -9,6 +9,7 @@ class BcryptService implements IHashingService {
     return await bcrypt.hash(password, envConfig.PASSWORD_SALT_ROUNDS);
   }
   public async compare(password: string, hash: string): Promise<boolean> {
+    // console.log(password, hash, envConfig.PASSWORD_SALT_ROUNDS);
     return await bcrypt.compare(password, hash);
   }
 }

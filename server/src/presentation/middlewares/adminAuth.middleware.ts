@@ -9,6 +9,9 @@ import { AuthResponseMessages } from "../../shared/constants/responseMessages";
 import { IRefreshTokenRepository } from "../../infrastructure/interface/repository/IRefreshToken.repository";
 import { IUserRepository } from "../../infrastructure/interface/repository/IUser.repository";
 import ForbiddenError from "../../shared/errors/forbidden.error";
+import RefreshTokenEntity from "../../domain/entities/refreshToken.entity";
+import jwt from "jsonwebtoken";
+import { envConfig } from "../../shared/config/env";
 
 injectable();
 class AdminAuthMiddleware {
@@ -55,6 +58,55 @@ class AdminAuthMiddleware {
       req.userId = jwtPayload.id;
 
       next();
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  /**
+   * method to validate refresh token
+   * @param req
+   * @param res
+   * @param next
+   */
+  public async refreshTokenValidator(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const refreshToken = req.cookies.refreshToken as string | undefined;
+      if (!refreshToken) {
+        throw new UnauthorizedError(AuthResponseMessages.INVALID_ACCESS_TOKEN);
+      }
+
+      const storedToken = await this._refreshTokenRepository.getRefreshToken(
+        new RefreshTokenEntity(refreshToken),
+      );
+
+      if (!storedToken) {
+        throw new UnauthorizedError(AuthResponseMessages.INVALID_ACCESS_TOKEN);
+      }
+
+      jwt.verify(
+        refreshToken,
+        envConfig.REFRESH_TOKEN_SECRET,
+        async (err, payload) => {
+          try {
+            if (err) {
+              req.cookies.remove();
+              throw new UnauthorizedError(
+                AuthResponseMessages.INVALID_ACCESS_TOKEN,
+              );
+            } else {
+              req.userId = payload?.sub as string;
+              next();
+            }
+          } catch (err) {
+            next(err);
+          }
+        },
+      );
     } catch (err) {
       next(err);
     }

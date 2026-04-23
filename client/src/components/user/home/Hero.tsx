@@ -1,43 +1,54 @@
 import React from 'react'
-import { Button } from '../../ui/Button'
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-[#050708]">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/src/assets/Images/hero_image.png" 
           alt="Hero Background" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center opacity-50"
         />
-        {/* Gradient overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-brand-background via-brand-background/90 to-transparent" />
-        <div className="absolute inset-0 bg-linear-to-t from-brand-background via-transparent to-brand-background/50" />
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-linear-to-b from-brand-background via-brand-background to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050708] via-[#050708]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050708] via-transparent to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="flex flex-col gap-8 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-eloran text-text-primary ">
+      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+        <div className="flex flex-col gap-5 max-w-2xl">
+          
+          {/* Headline - Scaled Down */}
+          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-tight">
             GLOBAL TRADING & <br/>
-            <span className="text-brand-green text-3xl md:text-4xl">INTELLIGENT <br/>INFRASTRUCTURE SOLUTIONS</span> 
+            <span className="text-[#3BA65E] font-semibold block mt-1 uppercase tracking-normal">
+              Intelligent <br/>Infrastructure Solutions
+            </span> 
           </h1>
           
-          <p className="text-text-secondary font-nunito-sans text-[18px] leading-relaxed max-w-xl">
-            Delivering engineered commodities, technical consulting, and advanced technology solutions across energy, infrastructure, automation, and sustainability sectors worldwide.
+          {/* Subtext - More compact */}
+          <p className="text-gray-400 font-nunito text-base md:text-lg leading-relaxed max-w-lg">
+            Delivering engineered commodities, technical consulting, and advanced technology solutions across energy and automation sectors worldwide.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <Button variant="primary" size="lg" className="rounded-full">
-              START A PROJECT
-            </Button>
-            <Button variant="outline" size="lg" className="rounded-full border-white/20 hover:border-brand-green" >
+          {/* Action Buttons - Refined padding and font */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            {/* Primary Glow Button */}
+            <button className="relative px-8 py-3 bg-gradient-to-r from-[#246338] to-[#3BA65E] text-white font-bold text-[11px] tracking-[0.15em] rounded shadow-[0_0_15px_rgba(59,166,94,0.3)] hover:brightness-110 transition-all">
+              DISCUSS A PROJECT
+            </button>
+
+            {/* Outline Button */}
+            <button className="flex items-center justify-center gap-2 px-8 py-3 border border-white/10 hover:border-[#3BA65E]/50 bg-white/5 backdrop-blur-sm text-white font-bold text-[11px] tracking-[0.15em] rounded transition-all">
               EXPLORE OUR CAPABILITIES
-            </Button>
+              <span className="text-sm opacity-70">↗</span>
+            </button>
           </div>
+
         </div>
       </div>
+
+      {/* Subtle bottom accent */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#3BA65E]/30 to-transparent" />
     </section>
   )
 }
