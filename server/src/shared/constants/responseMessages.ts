@@ -1,0 +1,14 @@
+export enum AuthResponseMessages {
+  // Error Messages
+  EMAIL_ALREADY_EXISTS = "User with email already exists",
+  EMAIL_DONT_EXIST = "User with email doesn't exist",
+  CREDENTIALS_DONT_MATCH = "Credentials don't match",
+  INVALID_ACCESS_TOKEN = "Invalid token",
+  CANNOT_ACCESS_ADMIN = "Cannot access admin page",
+  USER_NOT_FOUND = "User not found",
+
+  // Success Messages
+  REGISTERED = "Registered successfully",
+  LOGGED_IN = "Logged in successfully",
+  TOKEN_REFRESHED = "Token refreshed successfully",
+}
