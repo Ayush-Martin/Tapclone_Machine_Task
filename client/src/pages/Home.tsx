@@ -17,19 +17,20 @@ const Home = () => {
       <Header />
       {/* <img src={HeroImage} alt="" className='w-full object-cover' /> */}
       <Hero />
-      <div className="h-[1500px] w-full overflow-hidden relative">
-        {/* Gradient Overlay Div */}
-        <div className="absolute inset-0 w-full   bg-gradient-to-b from-brand-background via-brand-background/40  to-brand-background" />
-        <div className='w-full absolute inset-0 z-20'>
-          <Services />
-          <Sectors />
-
-        </div>
+      <div className="w-full relative">
+        {/* Background Image */}
         <img
           src={BgImage}
           alt="Hero Background"
-          className="h-full w-full object-cover object-[35%_65%]"
+          className="absolute inset-0 h-full w-full object-cover object-[35%_65%]"
         />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 w-full bg-gradient-to-b from-brand-background via-brand-background/40 to-brand-background" />
+        {/* Content — drives the height */}
+        <div className="relative z-20 w-full">
+          <Services />
+          <Sectors />
+        </div>
       </div>
       <Philosophy/>
       <GlobalOutlook/>
