@@ -17,6 +17,19 @@ import RefreshUseCase from "../../application/useCases/auth/refresh.useCase";
 import AuthController from "../../presentation/controllers/auth.controller";
 import AdminAuthMiddleware from "../../presentation/middlewares/adminAuth.middleware";
 
+// Service imports
+import { IServiceRepository } from "../interface/repository/IService.repository";
+import ServiceRepository from "../repository/service.repository";
+import { ICreateServiceUseCase } from "../../application/interface/useCases/service/ICreateService.useCase";
+import { IUpdateServiceUseCase } from "../../application/interface/useCases/service/IUpdateService.useCase";
+import { IDeleteServiceUseCase } from "../../application/interface/useCases/service/IDeleteService.useCase";
+import { IGetAllServicesUseCase } from "../../application/interface/useCases/service/IGetAllServices.useCase";
+import CreateServiceUseCase from "../../application/useCases/service/createService.useCase";
+import UpdateServiceUseCase from "../../application/useCases/service/updateService.useCase";
+import DeleteServiceUseCase from "../../application/useCases/service/deleteService.useCase";
+import GetAllServicesUseCase from "../../application/useCases/service/getAllServices.useCase";
+import ServiceController from "../../presentation/controllers/service.controller";
+
 const container = new Container();
 
 // Repositories
@@ -24,17 +37,25 @@ container.bind<IUserRepository>(TYPES.UserRepository).to(UserRepository);
 container
   .bind<IRefreshTokenRepository>(TYPES.RefreshTokenRepository)
   .to(RefreshTokenRepository);
+container.bind<IServiceRepository>(TYPES.ServiceRepository).to(ServiceRepository);
 
 // Services
 container.bind<IHashingService>(TYPES.HashingService).to(BcryptService);
 container.bind<IJWTService>(TYPES.JWTService).to(JWTService);
 
-// Use Cases
+// Use Cases — Auth
 container.bind<ILoginUseCase>(TYPES.LoginUseCase).to(LoginUseCase);
 container.bind<IRefreshUseCase>(TYPES.RefreshUseCae).to(RefreshUseCase);
 
+// Use Cases — Service
+container.bind<ICreateServiceUseCase>(TYPES.CreateServiceUseCase).to(CreateServiceUseCase);
+container.bind<IUpdateServiceUseCase>(TYPES.UpdateServiceUseCase).to(UpdateServiceUseCase);
+container.bind<IDeleteServiceUseCase>(TYPES.DeleteServiceUseCase).to(DeleteServiceUseCase);
+container.bind<IGetAllServicesUseCase>(TYPES.GetAllServicesUseCase).to(GetAllServicesUseCase);
+
 // Controllers
 container.bind<AuthController>(TYPES.AuthController).to(AuthController);
+container.bind<ServiceController>(TYPES.ServiceController).to(ServiceController);
 
 // Middlewares
 container

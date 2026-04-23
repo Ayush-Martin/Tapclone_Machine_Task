@@ -12,3 +12,14 @@ export enum AuthResponseMessages {
   LOGGED_IN = "Logged in successfully",
   TOKEN_REFRESHED = "Token refreshed successfully",
 }
+
+export enum ServiceResponseMessages {
+  // Error Messages
+  SERVICE_NOT_FOUND = "Service not found",
+
+  // Success Messages
+  SERVICE_CREATED = "Service created successfully",
+  SERVICE_UPDATED = "Service updated successfully",
+  SERVICE_DELETED = "Service deleted successfully",
+  SERVICES_FETCHED = "Services fetched successfully",
+}
