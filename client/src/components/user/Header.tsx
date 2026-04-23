@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Logo from '../../assets/Icons/logo.svg'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,7 +26,7 @@ const Header = () => {
         <div className="flex items-center gap-3 group cursor-pointer">
           <div className="relative">
             <img 
-              src="/src/assets/Icons/logo.svg" 
+              src={Logo} 
               alt="ABC Logo" 
               className="h-14 w-auto drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]" 
             />

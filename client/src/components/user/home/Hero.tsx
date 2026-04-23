@@ -1,4 +1,5 @@
 
+import HeroImage from '../../../assets/Images/hero_image.png'
 
 const Hero = () => {
   return (
@@ -6,7 +7,7 @@ const Hero = () => {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/src/assets/Images/hero_image.png" 
+          src={HeroImage}
           alt="Hero Background" 
           className="w-full h-full object-cover object-center opacity-50"
         />

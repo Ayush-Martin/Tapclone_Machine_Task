@@ -39,7 +39,9 @@ class ServiceController {
       const services = await this._getAllServicesUseCase.execute();
       res
         .status(StatusCodes.OK)
-        .json(successResponse(ServiceResponseMessages.SERVICES_FETCHED, services));
+        .json(
+          successResponse(ServiceResponseMessages.SERVICES_FETCHED, services),
+        );
     } catch (err) {
       next(err);
     }
@@ -55,7 +57,9 @@ class ServiceController {
       const service = await this._createServiceUseCase.execute(dto);
       res
         .status(StatusCodes.CREATED)
-        .json(successResponse(ServiceResponseMessages.SERVICE_CREATED, service));
+        .json(
+          successResponse(ServiceResponseMessages.SERVICE_CREATED, service),
+        );
     } catch (err) {
       next(err);
     }
@@ -67,11 +71,15 @@ class ServiceController {
    */
   public async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const dto = new ForwardUpdateServiceDTO(req.params.id, req.body);
+      const id = req.params.id as string;
+
+      const dto = new ForwardUpdateServiceDTO(id, req.body);
       const service = await this._updateServiceUseCase.execute(dto);
       res
         .status(StatusCodes.OK)
-        .json(successResponse(ServiceResponseMessages.SERVICE_UPDATED, service));
+        .json(
+          successResponse(ServiceResponseMessages.SERVICE_UPDATED, service),
+        );
     } catch (err) {
       next(err);
     }
@@ -83,11 +91,15 @@ class ServiceController {
    */
   public async delete(req: Request, res: Response, next: NextFunction) {
     try {
-      const dto = new ForwardDeleteServiceDTO(req.params.id);
+      const id = req.params.id as string;
+
+      const dto = new ForwardDeleteServiceDTO(id);
       const service = await this._deleteServiceUseCase.execute(dto);
       res
         .status(StatusCodes.OK)
-        .json(successResponse(ServiceResponseMessages.SERVICE_DELETED, service));
+        .json(
+          successResponse(ServiceResponseMessages.SERVICE_DELETED, service),
+        );
     } catch (err) {
       next(err);
     }
