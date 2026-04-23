@@ -7,7 +7,6 @@ import {
   Bell,
   Search,
   Menu,
-  X,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useState } from 'react';

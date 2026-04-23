@@ -1,4 +1,4 @@
-import React from 'react'
+
 import PhilosophyBgImage from "../../../assets/Images/philosophy_bg_image.png"
 import { Icon } from "@iconify/react";
 import ListBulletIcon from "../../../assets/Icons/ListBulletIcon.svg"
